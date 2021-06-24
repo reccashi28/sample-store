@@ -38,10 +38,6 @@ function update(
       if (update.publishedYear) {
         movie.publishedYear = update.publishedYear
       }
-      if (update.duration) {
-        movie.duration = update.duration
-      }
-
       // Add more fields here if needed
       return movie.save()
     })
