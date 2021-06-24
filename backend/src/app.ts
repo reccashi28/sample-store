@@ -14,6 +14,7 @@ dotenv.config({ path: '.env' })
 const app = express()
 const cors = require("cors")
 const cookieParser = require('cookie-parser')
+const path = require("path");
 
 app.use(bodyParser.json());
 
@@ -29,6 +30,9 @@ app.use( cors({
 // Express configuration
 app.set('port', process.env.PORT || 5000)
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "build"));
+   });
 // Use common 3rd-party middlewares
 app.use(compression())
 app.use(express.json())
