@@ -82,7 +82,7 @@ export default function SignIn() {
     <CssBaseline />
     <div className={classes.paper}>
       <Typography component="h1" variant="h5">
-        Sign In
+        Sign In now
       </Typography>
       <form className={classes.form} noValidate onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
