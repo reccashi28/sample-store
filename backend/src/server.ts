@@ -4,6 +4,8 @@ import mongoose from 'mongoose'
 import app from './app'
 import { MONGODB_URI, SESSION_SECRET } from './util/secrets'
 
+const path = require('path')
+const express = require('express')
 const mongoUrl = MONGODB_URI
 mongoose
   .connect(mongoUrl, {
@@ -12,6 +14,18 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
+// import client from '../../client'
+    if(process.env.NODE_ENV === "production") {
+      app.use(express.static(path.join(__dirname, '../../client/build')))
+
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../../client', 'build', 'index.html' ))
+      })
+    } else {
+      app.get('/', (req, res) => {
+        res.send("api running")
+      })
+    }
     // Start Express server
     app.listen(app.get('port'), () => {
       console.log(

@@ -30,9 +30,9 @@ app.use( cors({
 // Express configuration
 app.set('port', process.env.PORT || 5000)
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "build"));
-   });
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build"));
+//    });
 // Use common 3rd-party middlewares
 app.use(compression())
 app.use(express.json())
