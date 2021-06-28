@@ -22,6 +22,7 @@
     "copy-static-assets": "ts-node copyStaticAssets.ts",
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
+    "postinstall": "tsc",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
       "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build client"
   
@@ -118,5 +119,8 @@
   },
   "jest": {
     "testEnvironment": "node"
-  }
+  },
+  "engines":{
+    "node":"14.15.3"
+ }
 }
